@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
-import counterReducer from './Counter/counter.reducer';
+import journalEntriesReducer from './journalEntries/journalEntriesSlice';
 
 const rootReducer = combineReducers({
-    counter: counterReducer,
+    counter: journalEntriesReducer,
 })
 
 
 export default rootReducer;
 
-//try it
