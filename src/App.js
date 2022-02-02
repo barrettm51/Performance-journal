@@ -2,17 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import CurrentJournalEntry from './Components/journal/currentJournalEntry/CurrentJournalEntry';
 import JournalPage from './Components/journal/JournalPage';
+import Nav from './Components/Nav';
+import AccountSettings from './Components/AccountSettings/AccountSettings';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
   return (
     <div /*className="App"*/>
-      <header /*className="App-header"*/>
-        <img src={logo} /*className="App-logo" alt="logo"*/ />
-        <h1>
-          Performance Journal
-        </h1>
-      </header>
-      {/* <CurrentJournalEntry /> */}
+      <Nav />
+      
       <JournalPage />
     </div>
   );

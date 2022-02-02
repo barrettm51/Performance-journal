@@ -6,9 +6,12 @@ import JournalEntriesList from './JournalEntriesList';
 export default function JournalPage() {
 
     return(
-        <div className='container' >
-            <JournalEntriesList />
-            <CurrentJournalEntry />
+        <div>
+            <h1>Journal</h1>
+            <div className='container' >
+                <JournalEntriesList />
+                <CurrentJournalEntry />
+            </div>
         </div>
     );
 };
