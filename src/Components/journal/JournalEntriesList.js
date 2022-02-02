@@ -4,15 +4,19 @@ import { selectJournalEntries } from "../../redux/journalEntries/journalEntriesS
 
 export default function JournalEntriesList() {
     const journalEntries = useSelector(selectJournalEntries);
-
+    const journalEntriesLatestFirst = Object.values(journalEntries).reverse(); 
 
     return(
-        <div>
+        <div className="JournalEntriesListContainer">
             <ul>
-               {Object.values(journalEntries).map((entry) => {
-                   return (
-                       <li>{entry.journalEntryName}</li>
-                   );
+               {journalEntriesLatestFirst.map((entry) => {
+                return (
+                    <li className='journalEntryListName'>{entry.journalEntryName}
+                        <ul className='ulForDate'>
+                            <li className='journalDateCreated'>{entry.journalDateCreated}</li>
+                        </ul>
+                    </li>
+                );
                })} 
             </ul>
         </div>
