@@ -1,6 +1,11 @@
-import { createStore } from 'redux';
-import rootReducer from './rootReducer.js';
+import { configureStore } from '@reduxjs/toolkit';
 
-const store = createStore(rootReducer);
+import journalEntriesReducer from './journalEntries/journalEntriesSlice';
+
+const store = configureStore({
+    reducer: {
+        journalEntries: journalEntriesReducer
+    }
+});
 
 export default store;

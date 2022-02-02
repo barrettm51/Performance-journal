@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import CurrentJournalEntry from './Components/currentJournalEntry/CurrentJournalEntry';
+import CurrentJournalEntry from './Components/journal/currentJournalEntry/CurrentJournalEntry';
 
 function App() {
   return (
