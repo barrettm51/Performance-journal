@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import CurrentJournalEntry from './Components/journal/currentJournalEntry/CurrentJournalEntry';
+import JournalPage from './Components/journal/JournalPage';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
           Performance Journal
         </h1>
       </header>
-      <CurrentJournalEntry />
+      {/* <CurrentJournalEntry /> */}
+      <JournalPage />
     </div>
   );
 }
