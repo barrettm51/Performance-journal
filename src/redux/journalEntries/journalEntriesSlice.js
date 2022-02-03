@@ -7,7 +7,14 @@ export const journalEntriesSlice = createSlice({
     },
     reducers: {
         addJournalEntry: (state, action) => {
-            //Add logic
+            const {id, journalDateCreated, journalEntryName, journalContent} = action.payload;
+            console.log(journalContent);
+            state.journalEntries[id] = {
+                id: id,
+                journalDateCreated: journalDateCreated,
+                journalEntryName: journalEntryName,
+                journalContent: journalContent
+            }
         },
         editJournalEntry: (state, action) => {
             //add logic
@@ -17,4 +24,4 @@ export const journalEntriesSlice = createSlice({
 
 export default journalEntriesSlice.reducer;
 export const selectJournalEntries = (state) => state.journalEntries.journalEntries;
-//export actions here
+export const { addJournalEntry } = journalEntriesSlice.actions;
