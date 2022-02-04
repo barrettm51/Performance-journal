@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectJournalEntries } from "../../redux/journalEntries/journalEntriesSlice";
+import { selectJournalEntries } from "./journalEntriesSlice";
 
 export default function JournalEntriesList() {
     const journalEntries = useSelector(selectJournalEntries);
@@ -22,3 +22,4 @@ export default function JournalEntriesList() {
         </div>
     );
 };
+

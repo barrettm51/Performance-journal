@@ -4,7 +4,7 @@ import JournalPage from './Components/journal/JournalPage';
 import Nav from './Components/Nav';
 import AccountSettings from './Components/AccountSettings/AccountSettings';
 import Dashboard from './Components/Dashboard/Dashboard';
-import { BrowserRouter, Switch, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (

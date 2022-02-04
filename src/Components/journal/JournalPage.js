@@ -1,7 +1,7 @@
 import React from 'react';
 import './JournalPage.css';
 import CurrentJournalEntry from './currentJournalEntry/CurrentJournalEntry';
-import JournalEntriesList from './JournalEntriesList';
+import JournalEntriesList from './JournalEntriesList/JournalEntriesList';
 
 export default function JournalPage() {
 

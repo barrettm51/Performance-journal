@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectJournalEntries } from "../../../redux/journalEntries/journalEntriesSlice";
-import { addJournalEntry } from "../../../redux/journalEntries/journalEntriesSlice";
+import { selectJournalEntries } from "../JournalEntriesList/journalEntriesSlice";
+import { addJournalEntry } from "../JournalEntriesList/journalEntriesSlice";
 
 export default function CurrentJournalEntry() {
     const [journalEntryName, setJournalEntryName] = useState(""); 
