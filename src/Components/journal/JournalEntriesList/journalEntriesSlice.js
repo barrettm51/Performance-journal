@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { todaysDate, timeRightNow } from '../../utilities';
 
 export const journalEntriesSlice = createSlice({
     name: 'journalEntries',
@@ -7,21 +8,28 @@ export const journalEntriesSlice = createSlice({
     },
     reducers: {
         addJournalEntry: (state, action) => {
-            const {id, journalDateCreated, journalEntryName, journalContent} = action.payload;
-            console.log(journalContent);
+            const {id, journalDateCreated, journalLastModified, journalEntryName, journalContent} = action.payload;
             state.journalEntries[id] = {
                 id: id,
                 journalDateCreated: journalDateCreated,
+                journalLastModified: journalLastModified,
                 journalEntryName: journalEntryName,
                 journalContent: journalContent
             }
         },
-        editJournalEntry: (state, action) => {
-            //add logic
+        editJournalEntryTitle: (state, action) => {
+            const { journalEntryName, id } = action.payload;
+            state.journalEntries[id].journalEntryName = journalEntryName;
+            state.journalEntries[id].journalLastModified = `${todaysDate()} ${timeRightNow()}`;
+        },
+        editJournalEntryContent: (state, action) => {
+            const { journalContent, id } = action.payload;
+            state.journalEntries[id].journalContent = journalContent;
+            state.journalEntries[id].journalLastModified = `${todaysDate()} ${timeRightNow()}`;
         }
     }
 });
 
 export default journalEntriesSlice.reducer;
 export const selectJournalEntries = (state) => state.journalEntries.journalEntries;
-export const { addJournalEntry } = journalEntriesSlice.actions;
+export const { addJournalEntry, editJournalEntryContent, editJournalEntryTitle } = journalEntriesSlice.actions;

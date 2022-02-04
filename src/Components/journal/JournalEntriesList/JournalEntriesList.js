@@ -11,7 +11,7 @@ export default function JournalEntriesList() {
             <ul>
                {journalEntriesLatestFirst.map((entry) => {
                 return (
-                    <li className='journalEntryListName'>{entry.journalEntryName}
+                    <li className='journalEntryListName' key={entry.id} >{entry.journalEntryName}
                         <ul className='ulForDate'>
                             <li className='journalDateCreated'>{entry.journalDateCreated}</li>
                         </ul>

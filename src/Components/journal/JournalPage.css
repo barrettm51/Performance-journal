@@ -50,5 +50,11 @@ input {
 }
 
 #date-created {
-    border-width: 0;
+    margin-left: 10px;
+    font-size: 11px;
+}
+
+#last-modified {
+    margin-left: 10px;
+    font-size: 11px;
 }
