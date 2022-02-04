@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectJournalEntries } from "../JournalEntriesList/journalEntriesSlice";
 import { addJournalEntry } from "../JournalEntriesList/journalEntriesSlice";
 
-export default function CurrentJournalEntry() {
+export default function CurrentJournalEntry({journalId}) {
     const [journalEntryName, setJournalEntryName] = useState(""); 
     const [journalContent, setJournalContent] = useState(""); 
     const [journalDateCreated, setjournalDateCreated] = useState(""); 
