@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectJournalEntries } from "./journalEntriesSlice";
 
-export default function JournalEntriesList() {
+export default function JournalEntriesList({openExistingJournalEntry}) {
     const journalEntries = useSelector(selectJournalEntries);
     const journalEntriesLatestFirst = Object.values(journalEntries).reverse(); 
 
@@ -11,11 +11,13 @@ export default function JournalEntriesList() {
             <ul>
                {journalEntriesLatestFirst.map((entry) => {
                 return (
-                    <li className='journalEntryListName' key={entry.id} >{entry.journalEntryName}
-                        <ul className='ulForDate'>
-                            <li className='journalDateCreated'>{entry.journalDateCreated}</li>
-                        </ul>
-                    </li>
+                    <button className='selectableJournalEntry' key={entry.id} onClick={() => openExistingJournalEntry(entry.id)} >
+                        <li className='journalEntryListName'  >{entry.journalEntryName}
+                            <ul className='ulForDate'>
+                                <li className='journalDateCreated'>{entry.journalDateCreated}</li>
+                            </ul>
+                        </li>
+                    </button> 
                 );
                })} 
             </ul>

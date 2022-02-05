@@ -26,10 +26,14 @@ export const journalEntriesSlice = createSlice({
             const { journalContent, id } = action.payload;
             state.journalEntries[id].journalContent = journalContent;
             state.journalEntries[id].journalLastModified = `${todaysDate()} ${timeRightNow()}`;
+        },
+        deleteJournalEntry: (state, action) => {
+            const { id } = action.payload;
+
         }
     }
 });
 
 export default journalEntriesSlice.reducer;
 export const selectJournalEntries = (state) => state.journalEntries.journalEntries;
-export const { addJournalEntry, editJournalEntryContent, editJournalEntryTitle } = journalEntriesSlice.actions;
+export const { addJournalEntry, editJournalEntryContent, editJournalEntryTitle, deleteJournalEntry } = journalEntriesSlice.actions;

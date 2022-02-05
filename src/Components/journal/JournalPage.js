@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './JournalPage.css';
 import CurrentJournalEntry from './currentJournalEntry/CurrentJournalEntry';
 import JournalEntriesList from './JournalEntriesList/JournalEntriesList';
 import { selectJournalEntries } from './JournalEntriesList/journalEntriesSlice';
@@ -24,13 +23,17 @@ export default function JournalPage() {
         setJournalId(newJournalId);
     };
 
+    const openExistingJournalEntry = (journalIdToOpen) => {
+        setJournalId(journalIdToOpen);
+    };
+
     return(
         <div>
             <h1>Journal</h1>
             <button onClick={createNewJournalEntry}>New Journal Entry</button>
             <div className='container' >
-                <JournalEntriesList />
-                {journalId ? <CurrentJournalEntry journalId={journalId} /> : <p>No notes to show</p> }
+                <JournalEntriesList openExistingJournalEntry={openExistingJournalEntry} />
+                {journalId ? <CurrentJournalEntry journalId={journalId} /> : <p>Select Note</p> }
             </div>
         </div>
     );

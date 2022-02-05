@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import JournalPage from './Components/journal/JournalPage';
 import Nav from './Components/Nav';

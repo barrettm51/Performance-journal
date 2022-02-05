@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectJournalEntries } from "../JournalEntriesList/journalEntriesSlice";
-import { addJournalEntry, editJournalEntryContent, editJournalEntryTitle } from "../JournalEntriesList/journalEntriesSlice";
+import { editJournalEntryContent, editJournalEntryTitle, deleteEntry } from "../JournalEntriesList/journalEntriesSlice";
 
 export default function CurrentJournalEntry({journalId}) {
     const journalEntries = useSelector(selectJournalEntries);
@@ -21,6 +21,13 @@ export default function CurrentJournalEntry({journalId}) {
             id: journalId,
             journalContent: e.currentTarget.value
         }))
+    };
+
+    const deleteEntry = () => {
+        dispatch(deleteEntry({
+            id: journalId
+        }));
+
     };
 
     return(
@@ -44,6 +51,7 @@ export default function CurrentJournalEntry({journalId}) {
                 <p id='date-created'>Entry created: {journalEntries[journalId].journalDateCreated}</p>
                 <p id='last-modified'>Last modified: {journalEntries[journalId].journalLastModified}</p>
                 <br></br>
+                <button onClick={deleteEntry} >Delete</button>
             </form>
         </div>
     );
