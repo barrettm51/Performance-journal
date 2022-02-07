@@ -51,7 +51,7 @@ export default function CurrentJournalEntry({journalId}) {
                 <p id='date-created'>Entry created: {journalEntries[journalId].journalDateCreated}</p>
                 <p id='last-modified'>Last modified: {journalEntries[journalId].journalLastModified}</p>
                 <br></br>
-                <button onClick={deleteEntry} >Delete</button>
+                {/* <button onClick={deleteEntry} >Delete</button> To be implemented once the database is up and running*/} 
             </form>
         </div>
     );
