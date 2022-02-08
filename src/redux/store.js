@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import journalEntriesReducer from './journalEntries/journalEntriesSlice';
+import journalEntriesReducer from '../Components/journal/JournalEntriesList/journalEntriesSlice';
 
 const store = configureStore({
     reducer: {

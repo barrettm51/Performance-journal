@@ -1,71 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectJournalEntries } from "../../../redux/journalEntries/journalEntriesSlice";
-import { addJournalEntry } from "../../../redux/journalEntries/journalEntriesSlice";
+import { selectJournalEntries } from "../JournalEntriesList/journalEntriesSlice";
+import { editJournalEntryContent, editJournalEntryTitle, deleteEntry } from "../JournalEntriesList/journalEntriesSlice";
 
-export default function CurrentJournalEntry() {
-    const [journalEntryName, setJournalEntryName] = useState(""); 
-    const [journalContent, setJournalContent] = useState(""); 
-    const [journalDateCreated, setjournalDateCreated] = useState(""); 
+export default function CurrentJournalEntry({journalId}) {
     const journalEntries = useSelector(selectJournalEntries);
     const dispatch = useDispatch();
     
-    const todaysDate = () => {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-        let hours = today.getHours();
-        let minutes = today.getMinutes();
-        const ampm = today.getHours() >= 12 ? 'pm' : 'am';
-        hours = hours % 12;
-        hours = hours ? hours: 12; //changes 0 hour to 12am
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        var time = hours + ":" + minutes + ampm;
-        today = mm + '/' + dd + '/' + yyyy + ' ' + time;
-        return today;
+    const editEntryTitle = (e) => {
+        e.preventDefault();
+        dispatch(editJournalEntryTitle({
+            id: journalId,
+            journalEntryName: e.currentTarget.value
+        }))
     };
 
-    useEffect(() => {
-        setjournalDateCreated(todaysDate);
-    }, []);
-
-    const handleSave = (e) => {
+    const editEntry = (e) => {
         e.preventDefault();
-        
-        dispatch(addJournalEntry({
-            id: Date.now(),
-            journalDateCreated: journalDateCreated,
-            journalEntryName: journalEntryName, 
-            journalContent: journalContent
+        dispatch(editJournalEntryContent({
+            id: journalId,
+            journalContent: e.currentTarget.value
+        }))
+    };
+
+    const deleteEntry = () => {
+        dispatch(deleteEntry({
+            id: journalId
         }));
+
     };
 
     return(
         <div> 
-            <form onSubmit={handleSave} >
+            <form >
                 <input 
                     id='entry-title'
                     type='text' 
-                    value={journalEntryName}
-                    onChange={(e) => setJournalEntryName(e.currentTarget.value)}
+                    value={journalEntries[journalId].journalEntryName}
+                    onChange={editEntryTitle}
                     placeholder="Today's Journal"
-                />
-                <input  
-                    type='text'
-                    id='date-created'
-                    defaultValue={journalDateCreated}
                 />
                 <br></br>
                 <textarea 
                     id='journal-content'
-                    value={journalContent}
-                    onChange={(e) => setJournalContent(e.currentTarget.value)} 
+                    value={journalEntries[journalId].journalContent}
+                    onChange={editEntry} 
                     placeholder="Write your entry here"
                 >
                 </textarea>
+                <p id='date-created'>Entry created: {journalEntries[journalId].journalDateCreated}</p>
+                <p id='last-modified'>Last modified: {journalEntries[journalId].journalLastModified}</p>
                 <br></br>
-                <input type="submit" value='Save' />
+                {/* <button onClick={deleteEntry} >Delete</button> To be implemented once the database is up and running*/} 
             </form>
         </div>
     );
