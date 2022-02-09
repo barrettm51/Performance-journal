@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CurrentJournalEntry from './currentJournalEntry/CurrentJournalEntry';
 import JournalEntriesList from './JournalEntriesList/JournalEntriesList';
-import { selectJournalEntries } from './JournalEntriesList/journalEntriesSlice';
+import { selectJournalEntries, addJournalEntry, loadJournalEntries } from './JournalEntriesList/journalEntriesSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { addJournalEntry } from './JournalEntriesList/journalEntriesSlice';
 import { todaysDate, timeRightNow } from '../utilities';
 
 export default function JournalPage() {
     const journalEntries = useSelector(selectJournalEntries);
     const dispatch = useDispatch();
     const [journalId, setJournalId] = useState('');
+
+    useEffect(() => {
+        fetch("/journals").then(
+            response => response.json()
+        ).then(
+            data => {
+                dispatch(loadJournalEntries(data));
+            }
+        )
+    }, []);
 
     const createNewJournalEntry = (e) => {
         let newJournalId = Date.now();

@@ -7,6 +7,9 @@ export const journalEntriesSlice = createSlice({
         journalEntries: {}
     },
     reducers: {
+        loadJournalEntries: (state, action) => {
+            state.journalEntries = action.payload;
+        },
         addJournalEntry: (state, action) => {
             const {id, journalDateCreated, journalLastModified, journalEntryName, journalContent} = action.payload;
             state.journalEntries[id] = {
@@ -29,11 +32,15 @@ export const journalEntriesSlice = createSlice({
         },
         deleteJournalEntry: (state, action) => {
             const { id } = action.payload;
-
+            //Add in logic once database is connected
         }
     }
 });
 
 export default journalEntriesSlice.reducer;
 export const selectJournalEntries = (state) => state.journalEntries.journalEntries;
-export const { addJournalEntry, editJournalEntryContent, editJournalEntryTitle, deleteJournalEntry } = journalEntriesSlice.actions;
+export const {  loadJournalEntries,
+                addJournalEntry, 
+                editJournalEntryContent, 
+                editJournalEntryTitle, 
+                deleteJournalEntry } = journalEntriesSlice.actions;
