@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model journal_entries {
+  id                          Int     @id
+  journalDateCreated          String? @db.VarChar(50) @map("date_and_time_created")
+  journalLastModified         String? @db.VarChar(50) @map("date_and_time_last_modified")
+  journalEntryName            String? @db.VarChar(200) @map("title")
+  journalContent              String? @map("content")
+  user_id                     Int?
+  users                       users?  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model users {
+  id              Int               @id
+  first_name      String?           @db.VarChar(25)
+  last_name       String?           @db.VarChar(25)
+  email_address   String?           @db.VarChar(40)
+  password        String?           @db.VarChar(50)
+  journal_entries journal_entries[]
+}

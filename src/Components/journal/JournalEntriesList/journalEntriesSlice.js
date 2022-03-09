@@ -8,7 +8,16 @@ export const journalEntriesSlice = createSlice({
     },
     reducers: {
         loadJournalEntries: (state, action) => {
-            state.journalEntries = action.payload;
+            action.payload.forEach((entry) => {
+                const { id, journalDateCreated, journalLastModified, journalEntryName, journalContent } = entry;
+                state.journalEntries[id] = {
+                    id: id,
+                    journalDateCreated: journalDateCreated,
+                    journalLastModified: journalLastModified,
+                    journalEntryName: journalEntryName,
+                    journalContent: journalContent
+                }
+            }) 
         },
         addJournalEntry: (state, action) => {
             const {id, journalDateCreated, journalLastModified, journalEntryName, journalContent} = action.payload;

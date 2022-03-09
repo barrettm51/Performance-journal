@@ -13,7 +13,7 @@ function Nav() {
                 <Link style={navStyle} to='/Dashboard'>
                     <li>Dashboard</li>
                 </Link>
-                <Link style={navStyle} to='/'>
+                <Link style={navStyle} to='/Journals'>
                     <li>Journal</li>
                 </Link>
                 <Link style={navStyle} to='/AccountSettings'>

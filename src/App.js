@@ -13,6 +13,7 @@ function App() {
         <Routes>
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/" element={<JournalPage />} />
+            <Route path="/journals" element={<JournalPage />} />
             <Route path="/AccountSettings" element={<AccountSettings />} />
         </Routes>
       </div>

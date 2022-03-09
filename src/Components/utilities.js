@@ -19,3 +19,4 @@ export const timeRightNow = () => {
     var time = hours + ":" + minutes + ampm;
     return time;
 }
+
