@@ -11,13 +11,15 @@ export const journalEntriesSlice = createSlice({
             action.payload.forEach((entry) => {
                 const { id, journalDateCreated, journalLastModified, journalEntryName, journalContent } = entry;
                 state.journalEntries[id] = {
-                    id: id,
-                    journalDateCreated: journalDateCreated,
-                    journalLastModified: journalLastModified,
-                    journalEntryName: journalEntryName,
-                    journalContent: journalContent
+                    id,
+                    journalDateCreated,
+                    journalLastModified,
+                    journalEntryName,
+                    journalContent
                 }
             }) 
+            // Mock DB- for testing
+            // state.journalEntries = action.payload;
         },
         addJournalEntry: (state, action) => {
             const {id, journalDateCreated, journalLastModified, journalEntryName, journalContent} = action.payload;

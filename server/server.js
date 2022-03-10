@@ -26,6 +26,7 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 app.get('/journals', async (req, res) => {
+    //Mock DB- for testing
     // res.send(mockJournalEntries);
     const allJournalEntries = await prisma.journal_entries.findMany({
         select: {
@@ -36,7 +37,6 @@ app.get('/journals', async (req, res) => {
             journalContent: true,
         }
     });
-    
     res.json(allJournalEntries);
 });
 
