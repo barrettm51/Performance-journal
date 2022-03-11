@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectJournalEntries } from "../JournalEntriesList/journalEntriesSlice";
 import { editJournalEntryContent, editJournalEntryTitle, deleteEntry } from "../JournalEntriesList/journalEntriesSlice";
 
-export default function CurrentJournalEntry({journalId}) {
+export default function CurrentJournalEntry({journalId, setJournalId, fetchJournalEntriesFromDB}) {
     const journalEntries = useSelector(selectJournalEntries);
     const dispatch = useDispatch();
     
@@ -24,10 +24,12 @@ export default function CurrentJournalEntry({journalId}) {
     };
 
     const deleteEntry = () => {
-        dispatch(deleteEntry({
-            id: journalId
-        }));
-
+        if (window.confirm("Are you sure you want to delete this entry?")) {
+        fetch(`/journals/${journalId}`, {
+            method: 'DELETE'
+        })
+        .then( () => fetchJournalEntriesFromDB() );
+        }
     };
 
     return(
@@ -51,7 +53,7 @@ export default function CurrentJournalEntry({journalId}) {
                 <p id='date-created'>Entry created: {journalEntries[journalId].journalDateCreated}</p>
                 <p id='last-modified'>Last modified: {journalEntries[journalId].journalLastModified}</p>
                 <br></br>
-                {/* <button onClick={deleteEntry} >Delete</button> To be implemented once the database is up and running*/} 
+                <button onClick={deleteEntry} >Delete Entry</button>
             </form>
         </div>
     );

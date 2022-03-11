@@ -26,8 +26,6 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 app.get('/journals', async (req, res) => {
-    //Mock DB- for testing
-    // res.send(mockJournalEntries);
     const allJournalEntries = await prisma.journal_entries.findMany({
         select: {
             id: true,
@@ -40,16 +38,30 @@ app.get('/journals', async (req, res) => {
     res.json(allJournalEntries);
 });
 
-app.put('/journals/:journalId', (req, res) => {
-    //
+app.put('/journals/:journalId', async (req, res) => {
+    const updatedEntry = await prisma.journal_entries.update({
+        where: {
+            id: parseInt(req.params.journalId)
+        },
+        data: req.body
+    });
+    res.status(200).send(updatedEntry);
 });
 
-app.post('/journals', (req, res) => {
-
+app.post('/journals', async (req, res) => {
+    const addJournalEntry = await prisma.journal_entries.create({
+        data: req.body
+    });
+    res.status(201).send(addJournalEntry);
 });
 
-app.delete('/journals/:journalId', (req, res) => {
-
+app.delete('/journals/:journalId', async (req, res) => {
+    const deletedJournalEntry = await prisma.journal_entries.delete({
+        where: {
+            id: parseInt(req.params.journalId)
+        }
+    });
+    res.status(200).send(deletedJournalEntry);
 });
 
 app.listen(PORT, () => {
