@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectJournalEntries } from "../JournalEntriesList/journalEntriesSlice";
+import { selectJournalEntries, updateJournalEntry } from "../JournalEntriesList/journalEntriesSlice";
 import { editJournalEntryContent, editJournalEntryTitle, deleteEntry } from "../JournalEntriesList/journalEntriesSlice";
 
 export default function CurrentJournalEntry({journalId, setJournalId, fetchJournalEntriesFromDB}) {
@@ -12,7 +12,12 @@ export default function CurrentJournalEntry({journalId, setJournalId, fetchJourn
         dispatch(editJournalEntryTitle({
             id: journalId,
             journalEntryName: e.currentTarget.value
-        }))
+        }));
+        console.log('edit title');
+        dispatch(updateJournalEntry({
+            id: journalId,
+            journalEntryName: e.currentTarget.value
+        }));
     };
 
     const editEntry = (e) => {
@@ -20,7 +25,12 @@ export default function CurrentJournalEntry({journalId, setJournalId, fetchJourn
         dispatch(editJournalEntryContent({
             id: journalId,
             journalContent: e.currentTarget.value
-        }))
+        }));
+        console.log('edit it');
+        dispatch(updateJournalEntry({
+            id: journalId,
+            journalContent: e.currentTarget.value
+        }));
     };
 
     const deleteEntry = () => {

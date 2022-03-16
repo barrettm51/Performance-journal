@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const mockJournalEntries = require('./mockDB');
+// const mockJournalEntries = require('./mockDB');
 const bodyParser = require('body-parser');
 
 //Prisma Code
