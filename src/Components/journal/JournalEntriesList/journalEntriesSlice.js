@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { todaysDate, timeRightNow } from '../../utilities';
 
-export const updateJournalEntry = createAsyncThunk(
+export const updateJournalEntryinDb = createAsyncThunk(
     'journalEntriesSlice/updateJournalEntry',
     async ({ journalEntryName, journalContent, id }) => {
-        console.log('thunk');
         const updatedEntry = await fetch(`/journals/${id}`, {
             method: 'PUT',
             headers: {
@@ -26,7 +25,7 @@ export const journalEntriesSlice = createSlice({
     name: 'journalEntries',
     initialState: {
         journalEntries: {},
-        syncWithDb: 'N/A' 
+        syncWithDb: 'No Changes Made' 
     },
     reducers: {
         loadJournalEntries: (state, action) => {
@@ -54,34 +53,21 @@ export const journalEntriesSlice = createSlice({
         }
     },
     extraReducers: {
-        [updateJournalEntry.pending]: (state, action) => {
+        [updateJournalEntryinDb.pending]: (state, action) => {
             state.syncWithDb = 'Syncing';
-            // const { id, journalEntryName, journalContent, journalLastModified } = action.payload;
-            // state.journalEntries[id].journalEntryName = journalEntryName;
-            // state.journalEntries[id].journalContent = journalContent;
-            // state.journalEntries[id].journalLastModified = journalLastModified;
         },
-        [updateJournalEntry.fulfilled]: (state, action) => {
+        [updateJournalEntryinDb.fulfilled]: (state, action) => {
             state.syncWithDb = 'Synced';
-            // const { id, journalEntryName, journalContent, journalLastModified } = action.payload;
-            // state.journalEntries[id].journalEntryName = journalEntryName;
-            // state.journalEntries[id].journalContent = journalContent;
-            // state.journalEntries[id].journalLastModified = journalLastModified;
         },
-        [updateJournalEntry.rejected]: (state, action) => {
+        [updateJournalEntryinDb.rejected]: (state, action) => {
             state.syncWithDb = 'Not connected to database';
-            // const { id, journalEntryName, journalContent, journalLastModified } = action.payload;
-            // state.journalEntries[id].journalEntryName = journalEntryName;
-            // state.journalEntries[id].journalContent = journalContent;
-            // state.journalEntries[id].journalLastModified = journalLastModified;
         }
     }
 });
 
 export default journalEntriesSlice.reducer;
 export const selectJournalEntries = (state) => state.journalEntries.journalEntries;
+export const selectSyncStatus = (state) => state.journalEntries.syncWithDb;
 export const {  loadJournalEntries,
-                addJournalEntry, 
                 editJournalEntryContent, 
-                editJournalEntryTitle, 
-                deleteJournalEntry } = journalEntriesSlice.actions;
+                editJournalEntryTitle } = journalEntriesSlice.actions;

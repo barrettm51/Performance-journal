@@ -39,9 +39,12 @@ export default function JournalPage() {
             },
             body: JSON.stringify(newJournalEntry)
         })
-        .then( () => fetchJournalEntriesFromDB() )
+        .then( () => {
+            fetchJournalEntriesFromDB()
+        });        
         //Line below is commented out because it throws an Error right now. I need to find a way to 
         //switch to the newly created Entry without it throwing an error.
+        // setTimeout(setJournalId(newJournalId), 2000);
         // .then( () => setJournalId(newJournalId) );
     };
 

@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectJournalEntries, updateJournalEntry } from "../JournalEntriesList/journalEntriesSlice";
-import { editJournalEntryContent, editJournalEntryTitle, deleteEntry } from "../JournalEntriesList/journalEntriesSlice";
+import { selectJournalEntries, selectSyncStatus, updateJournalEntryinDb } from "../JournalEntriesList/journalEntriesSlice";
+import { editJournalEntryContent, editJournalEntryTitle } from "../JournalEntriesList/journalEntriesSlice";
 
 export default function CurrentJournalEntry({journalId, setJournalId, fetchJournalEntriesFromDB}) {
     const journalEntries = useSelector(selectJournalEntries);
+    const syncStatus = useSelector(selectSyncStatus);
     const dispatch = useDispatch();
-    
+
     const editEntryTitle = (e) => {
         e.preventDefault();
+        console.log('editing title');
         dispatch(editJournalEntryTitle({
             id: journalId,
             journalEntryName: e.currentTarget.value
         }));
-        console.log('edit title');
-        dispatch(updateJournalEntry({
+        dispatch(updateJournalEntryinDb({
             id: journalId,
             journalEntryName: e.currentTarget.value
         }));
@@ -22,12 +23,12 @@ export default function CurrentJournalEntry({journalId, setJournalId, fetchJourn
 
     const editEntry = (e) => {
         e.preventDefault();
+        console.log('editing entry');
         dispatch(editJournalEntryContent({
             id: journalId,
             journalContent: e.currentTarget.value
         }));
-        console.log('edit it');
-        dispatch(updateJournalEntry({
+        dispatch(updateJournalEntryinDb({
             id: journalId,
             journalContent: e.currentTarget.value
         }));
@@ -63,6 +64,7 @@ export default function CurrentJournalEntry({journalId, setJournalId, fetchJourn
                 <p id='date-created'>Entry created: {journalEntries[journalId].journalDateCreated}</p>
                 <p id='last-modified'>Last modified: {journalEntries[journalId].journalLastModified}</p>
                 <br></br>
+                <p className="syncStatus">{syncStatus}</p>
                 <button onClick={deleteEntry} >Delete Entry</button>
             </form>
         </div>
