@@ -82,6 +82,9 @@ input {
   font-size: 11px;
 }
 
+.syncStatus {
+  color: green;
+}
 
 
 

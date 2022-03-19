@@ -1,33 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectJournalEntries } from "../JournalEntriesList/journalEntriesSlice";
-import { editJournalEntryContent, editJournalEntryTitle, deleteEntry } from "../JournalEntriesList/journalEntriesSlice";
+import { selectJournalEntries, selectSyncStatus, updateJournalEntryinDb } from "../JournalEntriesList/journalEntriesSlice";
+import { editJournalEntryContent, editJournalEntryTitle } from "../JournalEntriesList/journalEntriesSlice";
 
-export default function CurrentJournalEntry({journalId}) {
+export default function CurrentJournalEntry({journalId, setJournalId, fetchJournalEntriesFromDB}) {
     const journalEntries = useSelector(selectJournalEntries);
+    const syncStatus = useSelector(selectSyncStatus);
     const dispatch = useDispatch();
-    
+
     const editEntryTitle = (e) => {
         e.preventDefault();
+        console.log('editing title');
         dispatch(editJournalEntryTitle({
             id: journalId,
             journalEntryName: e.currentTarget.value
-        }))
+        }));
+        dispatch(updateJournalEntryinDb({
+            id: journalId,
+            journalEntryName: e.currentTarget.value
+        }));
     };
 
     const editEntry = (e) => {
         e.preventDefault();
+        console.log('editing entry');
         dispatch(editJournalEntryContent({
             id: journalId,
             journalContent: e.currentTarget.value
-        }))
+        }));
+        dispatch(updateJournalEntryinDb({
+            id: journalId,
+            journalContent: e.currentTarget.value
+        }));
     };
 
     const deleteEntry = () => {
-        dispatch(deleteEntry({
-            id: journalId
-        }));
-
+        if (window.confirm("Are you sure you want to delete this entry?")) {
+        fetch(`/journals/${journalId}`, {
+            method: 'DELETE'
+        })
+        .then( () => fetchJournalEntriesFromDB() );
+        }
     };
 
     return(
@@ -51,7 +64,8 @@ export default function CurrentJournalEntry({journalId}) {
                 <p id='date-created'>Entry created: {journalEntries[journalId].journalDateCreated}</p>
                 <p id='last-modified'>Last modified: {journalEntries[journalId].journalLastModified}</p>
                 <br></br>
-                {/* <button onClick={deleteEntry} >Delete</button> To be implemented once the database is up and running*/} 
+                <p className="syncStatus">{syncStatus}</p>
+                <button onClick={deleteEntry} >Delete Entry</button>
             </form>
         </div>
     );
