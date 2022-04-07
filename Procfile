@@ -1,1 +1,1 @@
-web: npm start
+web: server/server.js && npm --prefix client run npm start
