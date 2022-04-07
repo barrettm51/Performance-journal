@@ -7,20 +7,6 @@ const bodyParser = require('body-parser');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-//BOILER PLATE TESTER CODE FOR PRISMA 
-// async function main() {
-//     const allEntries = await prisma.journal_entries.findMany();
-//     console.log(allEntries);
-// }
-
-// main()
-//     .catch((e) => {
-//         throw e;
-//     })
-//     .finally(async () => {
-//         await prisma.$disconnect();
-//     });
-
 const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
