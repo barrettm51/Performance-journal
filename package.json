@@ -1,0 +1,19 @@
+{
+  "name": "performance-journal-current",
+  "version": "1.0.0",
+  "description": "Create and store journal entries. Check in every morning with your focus and mood levels. Integrate with your Fitbit data to get insights on how your sleep, fitness and lifestyle affect your daily performance.",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd server && npm run start\" \"cd client && npm run start\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barrettm51/Performance-journal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barrettm51/Performance-journal/issues"
+  },
+  "homepage": "https://github.com/barrettm51/Performance-journal#readme"
+}
