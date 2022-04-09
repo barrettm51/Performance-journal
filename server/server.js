@@ -9,6 +9,8 @@ const prisma = new PrismaClient();
 
 const PORT = process.env.PORT || 5000;
 
+app.use(express.static(path.join(__dirname, "../client/build")));
+
 app.use(bodyParser.json());
 
 app.get('/journals', async (req, res) => {
