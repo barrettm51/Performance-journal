@@ -13,6 +13,7 @@ model journal_entries {
   journalLastModified         String? @db.VarChar(50) @map("date_and_time_last_modified")
   journalEntryName            String? @db.VarChar(200) @map("title")
   journalContent              String? @map("content")
+  test                        String? @map("testField")
   user_id                     Int?
   users                       users?  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

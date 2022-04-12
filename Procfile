@@ -1,3 +1,3 @@
 web: npm run start
 
-release: npx prisma migrate deploy --schema=./server/prisma/schema.prisma
+release: cd server && npx prisma migrate deploy 

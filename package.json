@@ -4,7 +4,7 @@
   "description": "Create and store journal entries. Check in every morning with your focus and mood levels. Integrate with your Fitbit data to get insights on how your sleep, fitness and lifestyle affect your daily performance.",
   "main": "index.js",
   "scripts": {
-    "build": "concurrently \"cd server && npm install\" \"prisma generate --schema=./server/prisma/schema.prisma && npx prisma db push --schema=./server/prisma/schema.prisma\" \"cd client && npm install && npm run build\"",
+    "build": "concurrently \"cd server && npm install\" \"prisma generate --schema=./server/prisma/schema.prisma\" \"cd client && npm install && npm run build\"",
     "start": "concurrently \"cd server && npm run start\""
   },
   "repository": {
