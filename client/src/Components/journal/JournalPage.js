@@ -4,6 +4,8 @@ import JournalEntriesList from './JournalEntriesList/JournalEntriesList';
 import { selectJournalEntries, addJournalEntry, loadJournalEntries } from './JournalEntriesList/journalEntriesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { todaysDate, timeRightNow } from '../utilities';
+import { Button, Container, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function JournalPage() {
     const journalEntries = useSelector(selectJournalEntries);
@@ -54,7 +56,7 @@ export default function JournalPage() {
     return(
         <div>
             <h1>Journal</h1>
-            <button onClick={createNewJournalEntry}>New Journal Entry</button>
+            <Button onClick={createNewJournalEntry} variant='primary'>New Journal Entry</Button>
             <div className='container' >
                 <JournalEntriesList openExistingJournalEntry={openExistingJournalEntry} />
                 {journalId ? <CurrentJournalEntry journalId={journalId} setJournalId={setJournalId} fetchJournalEntriesFromDB={fetchJournalEntriesFromDB} /> : <p>Select Note</p> }
