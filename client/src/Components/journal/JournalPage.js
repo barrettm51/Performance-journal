@@ -5,7 +5,7 @@ import { selectJournalEntries, addJournalEntry, loadJournalEntries } from './Jou
 import { useDispatch, useSelector } from 'react-redux';
 import { todaysDate, timeRightNow } from '../utilities';
 import { Button, Container, Row, Col } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function JournalPage() {
     const journalEntries = useSelector(selectJournalEntries);

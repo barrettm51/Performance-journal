@@ -1,0 +1,22 @@
+
+
+//overwrite theme variables
+
+// $primary: purple;
+$secondary: blue;
+
+#navbarBT {
+    background: #4E944F;
+     // color: purple;
+}
+
+$theme-colors: (
+    'primary': #83BD75,
+);
+
+
+//import bootstrap files- Keep at the bottom of file
+@import "~bootstrap/scss/bootstrap.scss";
+
+
+
