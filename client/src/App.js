@@ -1,5 +1,3 @@
-import './App.css';
-import './custom.scss';
 import JournalPage from './Components/journal/JournalPage';
 import Navigation from './Components/Nav';
 import AccountSettings from './Components/AccountSettings/AccountSettings';
@@ -9,7 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <BrowserRouter>
-      <div >
+      <div className='entire-app'>
         <Navigation />
         <Routes>
             <Route path="/Dashboard" element={<Dashboard />} />

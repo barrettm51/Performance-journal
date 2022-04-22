@@ -1,22 +1,120 @@
 
-
 //overwrite theme variables
-
-// $primary: purple;
-$secondary: blue;
-
-#navbarBT {
-    background: #4E944F;
-     // color: purple;
-}
+$primary: #83BD75;
+$secondary: #4E944F;
+$light-yellow: #E9EFC0;
+$lightest-green: #B4E197;
 
 $theme-colors: (
-    'primary': #83BD75,
+    'primary': $primary
 );
 
+@mixin paddingMainPages {
+    padding-top: 70px;
+    padding-left: 20px;
+}
+
+//Overall App
+.entire-app {
+    // background-color: $light-yellow;
+}
+
+//Navigation
+
+.navbar {
+    background: $secondary;
+}
+
+
+//Journal Page
+
+.journal-page {
+  @include paddingMainPages();
+}
+
+.container {
+    display: flex; 
+  } 
+  
+  .JournalEntriesListContainer {
+    margin: 20px;
+  }
+  
+  .JournalEntriesListContainer button {
+    background: #F8F8F8;
+    display: block;
+  }
+  
+  ul {
+    list-style-type: none;
+    // padding: 0px;
+    // margin: 0px;
+    // border-radius: 5px;
+  }
+  
+  .journalEntryListName {
+    margin: 10px 0;
+    font-weight: 600;
+  }
+  
+  .ulForDate {
+    padding-left: 0;
+  }
+  
+  .journalDateCreated {
+    font-size: 10px;
+  }
+
+/* Journal Entry */
+textArea {
+    height: 300px;
+    width: 500px;
+    background-color: #F8F8F8;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+
+  input {
+    border-width: 0.5px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  
+  #entry-title {
+    font-weight: 700;
+    font-size: 20px;
+    color: blue;
+    width: 400px;
+  }
+  
+  #date-created {
+    margin-left: 10px;
+    font-size: 11px;
+  }
+  
+  #last-modified {
+    margin-left: 10px;
+    font-size: 11px;
+  }
+  
+  .syncStatus {
+    color: $primary;
+  }
+
+  //Dashboard Page
+  .dashboard {
+    @include paddingMainPages();
+  }
+
+  //Account Settings Page
+  .account-settings {
+    @include paddingMainPages();
+  }
 
 //import bootstrap files- Keep at the bottom of file
-@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap";
 
 
 
