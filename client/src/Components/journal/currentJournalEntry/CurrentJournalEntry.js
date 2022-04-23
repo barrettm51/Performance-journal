@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectJournalEntries, selectSyncStatus, updateJournalEntryinDb } from "../JournalEntriesList/journalEntriesSlice";
 import { editJournalEntryContent, editJournalEntryTitle } from "../JournalEntriesList/journalEntriesSlice";
+import { Button } from 'react-bootstrap';
 
 export default function CurrentJournalEntry({journalId, setJournalId, fetchJournalEntriesFromDB}) {
     const journalEntries = useSelector(selectJournalEntries);
@@ -65,7 +66,7 @@ export default function CurrentJournalEntry({journalId, setJournalId, fetchJourn
                 <p id='last-modified'>Last modified: {journalEntries[journalId].journalLastModified}</p>
                 <br></br>
                 <p className="syncStatus">{syncStatus}</p>
-                <button onClick={deleteEntry} >Delete Entry</button>
+                <button id='delete-button' onClick={deleteEntry} >Delete Entry</button>
             </form>
         </div>
     );

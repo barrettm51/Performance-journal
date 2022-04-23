@@ -6,7 +6,9 @@ $light-yellow: #E9EFC0;
 $lightest-green: #B4E197;
 
 $theme-colors: (
-    'primary': $primary
+    'primary': $primary,
+    'danger' : red,
+    'secondary': $secondary,
 );
 
 @mixin paddingMainPages {
@@ -25,7 +27,6 @@ $theme-colors: (
     background: $secondary;
 }
 
-
 //Journal Page
 
 .journal-page {
@@ -40,9 +41,10 @@ $theme-colors: (
     margin: 20px;
   }
   
-  .JournalEntriesListContainer button {
+  .JournalEntriesListContainer Button {
     background: #F8F8F8;
     display: block;
+    margin: 10px;
   }
   
   ul {
@@ -101,6 +103,11 @@ textArea {
   
   .syncStatus {
     color: $primary;
+  }
+
+  #delete-button {
+    background-color: rgb(247, 38, 38);
+    border-radius: 5px;
   }
 
   //Dashboard Page
