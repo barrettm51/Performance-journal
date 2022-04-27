@@ -1,26 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectJournalEntries } from "./journalEntriesSlice";
+import { Button } from 'react-bootstrap';
 
-export default function JournalEntriesList({openExistingJournalEntry}) {
+export default function JournalEntriesList({openExistingJournalEntry, createNewJournalEntry}) {
     const journalEntries = useSelector(selectJournalEntries);
     const journalEntriesLatestFirst = Object.values(journalEntries).reverse(); 
 
     return(
         <div className="JournalEntriesListContainer">
-            <ul>
+               <Button onClick={createNewJournalEntry} className="createNewButton" >New Journal Entry</Button>
                {journalEntriesLatestFirst.map((entry) => {
                 return (
-                    <button className='selectableJournalEntry' key={entry.id} onClick={() => openExistingJournalEntry(entry.id)} >
-                        <li className='journalEntryListName'  >{entry.journalEntryName}
-                            <ul className='ulForDate'>
-                                <li className='journalDateCreated'>{entry.journalDateCreated}</li>
-                            </ul>
-                        </li>
-                    </button> 
+                    <Button className='selectableJournalEntry' key={entry.id} onClick={() => openExistingJournalEntry(entry.id)} >
+                        <div className='journalEntryListNameContainer' >
+                            <h2 className='journalEntryListName'  >{entry.journalEntryName}</h2>
+                        </div>
+                            <p className='journalDateCreated'>{entry.journalDateCreated}</p>
+                    </Button> 
                 );
                })} 
-            </ul>
         </div>
     );
 };

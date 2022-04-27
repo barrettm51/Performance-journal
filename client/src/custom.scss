@@ -1,0 +1,133 @@
+
+//overwrite theme variables
+$primary: #83BD75;
+$secondary: #4E944F;
+$light-yellow: #E9EFC0;
+$lightest-green: #B4E197;
+$hr-color: black;
+
+$theme-colors: (
+    'primary': $primary,
+    'danger' : red,
+    'secondary': $secondary,
+);
+
+@mixin paddingMainPages {
+    padding-top: 70px;
+    padding-left: 20px;
+}
+
+
+//Navigation
+
+.navbar {
+    background: $secondary;
+}
+
+.navbar .navbar-container {
+  margin-left: 0px;
+}
+
+//Journal Page
+
+.journal-page {
+  @include paddingMainPages();
+  margin-bottom: 100px;
+}
+
+.journal-entries-list-and-current-container {
+    display: flex;
+    // background-color: #E9EFC0;
+  } 
+  
+  .JournalEntriesListContainer {
+    margin: 0px 20px 20px 0px;
+  }
+
+  .JournalEntriesListContainer .createNewButton {
+    margin: 0px 0px 10px 20px;
+  }
+  
+  .JournalEntriesListContainer .selectableJournalEntry {
+    background: #F8F8F8;
+    display: block;
+    margin: 10px 10px 10px 0px;
+    width: 200px;
+    height: 85px;
+    overflow: hidden;
+    list-style-type: none;
+  }
+  
+  .journalEntryListNameContainer {
+    overflow: hidden;
+    max-height: 45px;
+  }
+  
+  .journalEntryListName {
+    margin: 5px 0px 5px 0px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: left;
+  }
+    
+  .journalDateCreated {
+    font-size: 10px;
+    text-align: left;
+  }
+
+/* Journal Entry */
+.journalEntryForm {
+  margin-top: 0px;
+}
+
+textArea {
+    height: 600px;
+    width: 900px;
+    background-color: #F8F8F8;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 0px;
+  }
+  
+  #entry-title {
+    font-weight: 700;
+    font-size: 20px;
+    width: 900px;
+    border-width: 0.5px;
+    padding: 10px;
+    border-radius: 0px;
+  }
+  
+  #date-created {
+    margin-left: 10px;
+    font-size: 11px;
+  }
+  
+  #last-modified {
+    margin-left: 10px;
+    font-size: 11px;
+  }
+  
+  .syncStatus {
+    color: $primary;
+  }
+
+  #delete-button {
+    background-color: rgb(247, 38, 38);
+    border-radius: 5px;
+  }
+
+  //Dashboard Page
+  .dashboard {
+    @include paddingMainPages();
+  }
+
+  //Account Settings Page
+  .account-settings {
+    @include paddingMainPages();
+  }
+
+//import bootstrap files- Keep at the bottom of file
+@import "~bootstrap/scss/bootstrap";
+
+
