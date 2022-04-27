@@ -11,7 +11,6 @@ export default function CurrentJournalEntry({journalId, setJournalId, fetchJourn
 
     const editEntryTitle = (e) => {
         e.preventDefault();
-        console.log('editing title');
         dispatch(editJournalEntryTitle({
             id: journalId,
             journalEntryName: e.currentTarget.value
@@ -24,7 +23,6 @@ export default function CurrentJournalEntry({journalId, setJournalId, fetchJourn
 
     const editEntry = (e) => {
         e.preventDefault();
-        console.log('editing entry');
         dispatch(editJournalEntryContent({
             id: journalId,
             journalContent: e.currentTarget.value
@@ -45,8 +43,7 @@ export default function CurrentJournalEntry({journalId, setJournalId, fetchJourn
     };
 
     return(
-        <div> 
-            <form >
+            <form className="journalEntryForm">
                 <input 
                     id='entry-title'
                     type='text' 
@@ -68,6 +65,5 @@ export default function CurrentJournalEntry({journalId, setJournalId, fetchJourn
                 <p className="syncStatus">{syncStatus}</p>
                 <button id='delete-button' onClick={deleteEntry} >Delete Entry</button>
             </form>
-        </div>
     );
 };

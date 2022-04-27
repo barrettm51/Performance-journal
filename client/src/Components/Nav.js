@@ -6,7 +6,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 function Navigation() {    
     return(
         <Navbar collapseOnSelect fixed='top' expand='sm' variant='dark' className='navbar'>
-            <Container>
+            <Container className="navbar-container" >
                 <Navbar.Toggle aria-controls='responsive-navbar-nav' />
                 <Navbar.Collapse id='responsive-navbar-nav' >
                     <Nav>
