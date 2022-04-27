@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import CurrentJournalEntry from './currentJournalEntry/CurrentJournalEntry';
 import JournalEntriesList from './JournalEntriesList/JournalEntriesList';
-import { selectJournalEntries, addJournalEntry, loadJournalEntries } from './JournalEntriesList/journalEntriesSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { loadJournalEntries } from './JournalEntriesList/journalEntriesSlice';
+import { useDispatch } from 'react-redux';
 import { todaysDate, timeRightNow } from '../utilities';
-import { Button } from 'react-bootstrap';
 
 export default function JournalPage() {
-    const journalEntries = useSelector(selectJournalEntries);
     const dispatch = useDispatch();
     const [journalId, setJournalId] = useState('');
 
