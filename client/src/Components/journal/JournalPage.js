@@ -52,7 +52,7 @@ export default function JournalPage() {
 
     return(
         <div className='journal-page' >
-            <h1>Journal time</h1>
+            <h1>Journal Entries</h1>
             <hr></hr>
             <div className='journal-entries-list-and-current-container' >
                 <JournalEntriesList openExistingJournalEntry={openExistingJournalEntry} createNewJournalEntry={createNewJournalEntry} />
