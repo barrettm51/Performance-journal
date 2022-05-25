@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import { useStytchSession } from '@stytch/stytch-react';
+
 
 function Navigation() {    
     return(
@@ -13,6 +15,8 @@ function Navigation() {
                         <Nav.Link as={Link} to='/Dashboard'>Dashboard</Nav.Link>
                         <Nav.Link as={Link} to='/Journals'>Journal</Nav.Link>
                         <Nav.Link as={Link} to='/AccountSettings'>Account Settings</Nav.Link>
+                        <Nav.Link as={Link} to='/Login'>Login</Nav.Link>
+                        <button>Logout</button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
