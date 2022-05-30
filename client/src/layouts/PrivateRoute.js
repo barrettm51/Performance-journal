@@ -4,7 +4,7 @@ import { useStytchSession } from "@stytch/stytch-react";
 function PrivateRoute({ children }) {
     const session = useStytchSession();
 
-    if(!session) return <Navigate to="/login" replace />
+    if(!session) return <Navigate to="/Login" replace />
 
     return children;
 }

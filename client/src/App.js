@@ -5,6 +5,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Login from './Components/login/Login';
 import Authenticate from './Components/login/Authenticate';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PrivateRoute from './layouts/PrivateRoute';
 
 function App() {
   return (
@@ -13,8 +14,12 @@ function App() {
         <Navigation />
         <Routes>
             <Route path="/Dashboard" element={<Dashboard />} />
-            <Route path="/" element={<JournalPage />} />
-            <Route path="/journals" element={<JournalPage />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/journals" element={
+              
+                <JournalPage />
+              
+            } />
             <Route path="/AccountSettings" element={<AccountSettings />} />
             <Route path="/Login" element={<Login />} ></Route>
             <Route path="/Authenticate" element={<Authenticate />} ></Route>

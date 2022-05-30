@@ -10,7 +10,15 @@ const prisma = new PrismaClient();
 
 const PORT = process.env.PORT || 5000;
 
-app.use(express.static(path.join(__dirname, "../client/build")));
+const clientBuildFolder = path.join(__dirname, "../client/build");
+
+app.use(express.static(clientBuildFolder));
+
+// app.use('/*', express.static(path.join(__dirname, "../client/build")));
+
+app.use('/Dashboard', express.static(clientBuildFolder));
+app.use('/AccountSettings', express.static(clientBuildFolder));
+app.use('/Login', express.static(clientBuildFolder));
 
 app.use(bodyParser.json());
 
