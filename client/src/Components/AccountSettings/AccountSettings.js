@@ -5,7 +5,7 @@ export default function AccountSettings() {
         <div className='account-settings' >
             <h1>Account Settings</h1>
             <hr></hr>
-            <p>User accounts coming soon!</p>
+            <p>Standard Account</p>
         </div>
     );
 }

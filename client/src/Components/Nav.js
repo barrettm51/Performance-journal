@@ -17,7 +17,7 @@ function Navigation( { handleLogout } ) {
                         {session && <Nav.Link as={Link} to='/Dashboard'>Dashboard</Nav.Link>}
                         {session && <Nav.Link as={Link} to='/Journals'>Journal</Nav.Link>}
                         {session && <Nav.Link as={Link} to='/AccountSettings'>Account Settings</Nav.Link>}
-                        {session && <button onClick={handleLogout} >Logout</button>}
+                        {session && <button id='logout' onClick={handleLogout} >Logout</button>}
 
                         {!session && <Navbar.Brand as={Link} to='/Login'>Performance Journal</Navbar.Brand>}
                         {!session && <Nav.Link as={Link} to='/Login'>Login</Nav.Link>}
