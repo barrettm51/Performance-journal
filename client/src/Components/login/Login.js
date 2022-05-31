@@ -1,5 +1,9 @@
+import { Navigate } from 'react-router-dom';
+import { useStytchSession } from '@stytch/stytch-react';
 
 function Login({ handleLogin }) {
+    const session = useStytchSession();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -8,6 +12,8 @@ function Login({ handleLogin }) {
 
         handleLogin(email.value);
     }
+
+    if(session) return <Navigate to='/Dashboard' replace /> 
 
     return (
         <div className='login' >
