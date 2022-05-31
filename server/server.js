@@ -19,6 +19,7 @@ app.use(express.static(clientBuildFolder));
 app.use('/Dashboard', express.static(clientBuildFolder));
 app.use('/AccountSettings', express.static(clientBuildFolder));
 app.use('/Login', express.static(clientBuildFolder));
+app.use('/Authenticate', express.static(clientBuildFolder));
 
 app.use(bodyParser.json());
 

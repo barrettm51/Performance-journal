@@ -4,7 +4,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { useStytchSession } from '@stytch/stytch-react';
 
 
-function Navigation() {
+function Navigation( { handleLogout } ) {
     const session = useStytchSession();
     
     return(
@@ -14,10 +14,10 @@ function Navigation() {
                 <Navbar.Collapse id='responsive-navbar-nav' >
                     <Nav>
                         {session && <Navbar.Brand as={Link} to='/Dashboard'>Performance Journal</Navbar.Brand>}
-                        {!session && <Nav.Link as={Link} to='/Dashboard'>Dashboard</Nav.Link>}
-                        {!session && <Nav.Link as={Link} to='/Journals'>Journal</Nav.Link>}
-                        {!session && <Nav.Link as={Link} to='/AccountSettings'>Account Settings</Nav.Link>}
-                        {session && <button>Logout</button>}
+                        {session && <Nav.Link as={Link} to='/Dashboard'>Dashboard</Nav.Link>}
+                        {session && <Nav.Link as={Link} to='/Journals'>Journal</Nav.Link>}
+                        {session && <Nav.Link as={Link} to='/AccountSettings'>Account Settings</Nav.Link>}
+                        {session && <button onClick={handleLogout} >Logout</button>}
 
                         {!session && <Navbar.Brand as={Link} to='/Login'>Performance Journal</Navbar.Brand>}
                         {!session && <Nav.Link as={Link} to='/Login'>Login</Nav.Link>}
