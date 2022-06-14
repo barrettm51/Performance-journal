@@ -3,7 +3,7 @@ import { useStytch, useStytchSession } from '@stytch/stytch-react';
 import { useNavigate } from 'react-router-dom';
 
 function Authenticate () {
-    const client = useStytch();
+    const stytch = useStytch();
     const session = useStytchSession();
     const navigate = useNavigate();
 
@@ -13,14 +13,14 @@ function Authenticate () {
         } else {
             const token = new URLSearchParams(window.location.search).get('token');
 
-            client.magicLinks.authenticate(token, {
+            stytch.magicLinks.authenticate(token, {
                 session_duration_minutes: 60
             }).then(() => {
                 alert('Successfully Authenticated');
                 navigate(0);
             })
         }
-    }, [client, session])
+    }, [stytch, session])
     
     return (
         <div>

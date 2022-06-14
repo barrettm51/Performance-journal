@@ -10,12 +10,12 @@ import { useStytch } from '@stytch/stytch-react';
 import { useCallback } from 'react';
 
 function App() {
-  const client = useStytch();
+  const stytch = useStytch();
   const navigate = useNavigate();
 
   const handleLogin = async(email) => {
     try {
-    await client.magicLinks.email.loginOrCreate(email);
+    await stytch.magicLinks.email.loginOrCreate(email);
     alert(`Email has been sent to ${email}`);
     } catch(e) {
       console.log('Error logging in');
@@ -25,10 +25,10 @@ function App() {
   }
 
   const handleLogout = useCallback(async () => {
-    await client.session.revoke();
+    await stytch.session.revoke();
     alert('Logged out');
     navigate(0);
-  }, [client]);
+  }, [stytch]);
 
   return (
     <div className='entire-app'>

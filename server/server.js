@@ -62,6 +62,13 @@ app.delete('/journals/:journalId', async (req, res) => {
     res.status(200).send(deletedJournalEntry);
 });
 
+//Needs to be completed:
+// app.post('/users', (req, res) => {
+//     const stytchUserId = req.body.userId;
+//     // Add user to database
+//     res.send(`Created user with stytch User ID: ${stytchUserId}`);
+// })
+
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 });
