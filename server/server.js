@@ -20,10 +20,11 @@ app.use('/Dashboard', express.static(clientBuildFolder));
 app.use('/AccountSettings', express.static(clientBuildFolder));
 app.use('/Login', express.static(clientBuildFolder));
 app.use('/Authenticate', express.static(clientBuildFolder));
+app.use('/journals', express.static(clientBuildFolder));
 
 app.use(bodyParser.json());
 
-app.get('/journals', async (req, res) => {
+app.get('/journals.json', async (req, res) => {
     const allJournalEntries = await prisma.journal_entries.findMany({
         select: {
             id: true,

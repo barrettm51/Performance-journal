@@ -10,7 +10,7 @@ export default function JournalPage() {
     const [journalId, setJournalId] = useState('');
 
     const fetchJournalEntriesFromDB = () => {
-        fetch("/journals")
+        fetch("/journals.json")
         .then(
             response => response.json()
         ).then(

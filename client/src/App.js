@@ -15,8 +15,11 @@ function App() {
 
   const handleLogin = async(email) => {
     try {
-    await stytch.magicLinks.email.loginOrCreate(email);
+    await stytch.magicLinks.email.loginOrCreate(email)
+    .then((response) => console.log(response));
+    
     alert(`Email has been sent to ${email}`);
+
     } catch(e) {
       console.log('Error logging in');
       console.log(e);
