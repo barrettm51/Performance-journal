@@ -16,7 +16,7 @@ function Authenticate () {
             stytch.magicLinks.authenticate(token, {
                 session_duration_minutes: 60
             }).then((response) => {
-                console.log(response.user_id);
+                console.log(response);
                 alert('Successfully Authenticated');
                 navigate(0);
             })

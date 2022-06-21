@@ -38,7 +38,7 @@ function App() {
       <Navigation handleLogout={handleLogout} />
       <Routes>
           <Route path="/" element={<Login handleLogin={handleLogin}/>} />
-          <Route path="/Dashboard" element={
+          <Route path="/dashboard" element={
             <PrivateRoute>
               <Dashboard />
             </PrivateRoute>
@@ -48,13 +48,13 @@ function App() {
               <JournalPage />
             </PrivateRoute>
           } />
-          <Route path="/AccountSettings" element={
+          <Route path="/accountsettings" element={
             <PrivateRoute>
               <AccountSettings />
             </PrivateRoute>
           } />
-          <Route path="/Login" element={<Login handleLogin={handleLogin} />} ></Route>
-          <Route path="/Authenticate" element={<Authenticate />} ></Route>
+          <Route path="/login" element={<Login handleLogin={handleLogin} />} ></Route>
+          <Route path="/authenticate" element={<Authenticate />} ></Route>
           <Route path="*" element={<p>404 Page not found!</p>} ></Route>
       </Routes>
     </div>

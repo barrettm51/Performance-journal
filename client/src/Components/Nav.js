@@ -13,14 +13,14 @@ function Navigation( { handleLogout } ) {
                 <Navbar.Toggle aria-controls='responsive-navbar-nav' />
                 <Navbar.Collapse id='responsive-navbar-nav' >
                     <Nav>
-                        {session && <Navbar.Brand as={Link} to='/Dashboard'>Performance Journal</Navbar.Brand>}
-                        {session && <Nav.Link as={Link} to='/Dashboard'>Dashboard</Nav.Link>}
-                        {session && <Nav.Link as={Link} to='/Journals'>Journal</Nav.Link>}
-                        {session && <Nav.Link as={Link} to='/AccountSettings'>Account Settings</Nav.Link>}
+                        {session && <Navbar.Brand as={Link} to='/dashboard'>Performance Journal</Navbar.Brand>}
+                        {session && <Nav.Link as={Link} to='/dashboard'>Dashboard</Nav.Link>}
+                        {session && <Nav.Link as={Link} to='/journals'>Journal</Nav.Link>}
+                        {session && <Nav.Link as={Link} to='/accountsettings'>Account Settings</Nav.Link>}
                         {session && <button id='logout' onClick={handleLogout} >Logout</button>}
 
-                        {!session && <Navbar.Brand as={Link} to='/Login'>Performance Journal</Navbar.Brand>}
-                        {!session && <Nav.Link as={Link} to='/Login'>Login</Nav.Link>}
+                        {!session && <Navbar.Brand as={Link} to='/login'>Performance Journal</Navbar.Brand>}
+                        {!session && <Nav.Link as={Link} to='/login'>Login</Nav.Link>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

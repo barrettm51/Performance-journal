@@ -16,10 +16,10 @@ app.use(express.static(clientBuildFolder));
 
 // app.use('/*', express.static(path.join(__dirname, "../client/build")));
 
-app.use('/Dashboard', express.static(clientBuildFolder));
-app.use('/AccountSettings', express.static(clientBuildFolder));
-app.use('/Login', express.static(clientBuildFolder));
-app.use('/Authenticate', express.static(clientBuildFolder));
+app.use('/dashboard', express.static(clientBuildFolder));
+app.use('/accountsettings', express.static(clientBuildFolder));
+app.use('/login', express.static(clientBuildFolder));
+app.use('/authenticate', express.static(clientBuildFolder));
 app.use('/journals', express.static(clientBuildFolder));
 
 app.use(bodyParser.json());
