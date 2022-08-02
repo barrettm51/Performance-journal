@@ -40,7 +40,7 @@ app.get('/journals.json', async (req, res) => {
 app.put('/journals/:journalId', async (req, res) => {
     const updatedEntry = await prisma.journal_entries.update({
         where: {
-            id: parseInt(req.params.journalId)
+            id: req.params.journalId
         },
         data: req.body
     });
@@ -57,7 +57,7 @@ app.post('/journals', async (req, res) => {
 app.delete('/journals/:journalId', async (req, res) => {
     const deletedJournalEntry = await prisma.journal_entries.delete({
         where: {
-            id: parseInt(req.params.journalId)
+            id: req.params.journalId
         }
     });
     res.status(200).send(deletedJournalEntry);

@@ -23,13 +23,12 @@ export default function JournalPage() {
     }, []);
 
     const createNewJournalEntry = (e) => {
-        let newJournalId = Date.now();
         const newJournalEntry = {
-            id: newJournalId,
             journalLastModified: `${todaysDate()} ${timeRightNow()}`,
             journalDateCreated: `${todaysDate()} ${timeRightNow()}`,
             journalEntryName: `New Entry`,
-            journalContent: ''
+            journalContent: '',
+            user_id: 'test_user'
         };
         fetch("/journals", {
             method: 'POST',
