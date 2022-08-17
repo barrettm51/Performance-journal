@@ -15,6 +15,9 @@ function App() {
 
   const handleLogin = async(email) => {
     try {
+    // const params = {
+    //   email: "barrettm51@gmail.com"
+    // }
     await stytch.magicLinks.email.loginOrCreate(email)
     .then((response) => console.log(response));
     
