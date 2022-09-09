@@ -24,7 +24,7 @@ app.use('/journals', express.static(clientBuildFolder));
 
 app.use(bodyParser.json());
 
-app.get('/journals.json', async (req, res) => {
+app.get('/journals.json/:userId', async (req, res) => {
     const allJournalEntries = await prisma.journal_entries.findMany({
         select: {
             id: true,
@@ -32,6 +32,9 @@ app.get('/journals.json', async (req, res) => {
             journalLastModified: true,
             journalEntryName: true,
             journalContent: true,
+        }, 
+        where: {
+            user_id: req.params.userId
         }
     });
     res.json(allJournalEntries);
@@ -63,12 +66,32 @@ app.delete('/journals/:journalId', async (req, res) => {
     res.status(200).send(deletedJournalEntry);
 });
 
-//Needs to be completed:
-// app.post('/users', (req, res) => {
-//     const stytchUserId = req.body.userId;
-//     // Add user to database
-//     res.send(`Created user with stytch User ID: ${stytchUserId}`);
-// })
+// Stytch routes
+app.get('/users/:emailAddress', async (req, res) => {
+    const user = await prisma.users.findUnique({
+        where: {
+            email_address: req.params['emailAddress']
+        },
+        select: {
+            email_address: true
+        }
+    });
+    console.log(user);
+    let userExists = user? true : false;
+    res.status(200).send({userExists: userExists});
+})
+
+app.post('/users', async (req, res) => {
+    const stytchUserId = req.body.userId;
+    // Add user to database
+    await prisma.users.create({
+        data: {
+            id: stytchUserId,
+            email_address: req.body.email_address
+        }
+    })
+    res.send(`Created user with stytch User ID: ${stytchUserId}`);
+});
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);

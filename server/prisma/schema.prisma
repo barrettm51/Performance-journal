@@ -22,7 +22,7 @@ model users {
   id              String            @db.VarChar(60) @id
   first_name      String?           @db.VarChar(25)
   last_name       String?           @db.VarChar(25)
-  email_address   String            @db.VarChar(40)
+  email_address   String            @db.VarChar(40) @unique
   password        String?           @db.VarChar(50)
   journal_entries journal_entries[]
 }

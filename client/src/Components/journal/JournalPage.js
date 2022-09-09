@@ -4,13 +4,15 @@ import JournalEntriesList from './JournalEntriesList/JournalEntriesList';
 import { loadJournalEntries } from './JournalEntriesList/journalEntriesSlice';
 import { useDispatch } from 'react-redux';
 import { todaysDate, timeRightNow } from '../utilities';
+import { useStytchSession } from '@stytch/stytch-react';
 
 export default function JournalPage() {
+    const session = useStytchSession();
     const dispatch = useDispatch();
     const [journalId, setJournalId] = useState('');
 
     const fetchJournalEntriesFromDB = () => {
-        fetch("/journals.json")
+        fetch(`/journals.json/${session.user_id}`)
         .then(
             response => response.json()
         ).then(
@@ -28,7 +30,7 @@ export default function JournalPage() {
             journalDateCreated: `${todaysDate()} ${timeRightNow()}`,
             journalEntryName: `New Entry`,
             journalContent: '',
-            user_id: 'test_user'
+            user_id: session.user_id
         };
         fetch("/journals", {
             method: 'POST',

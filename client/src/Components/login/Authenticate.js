@@ -9,17 +9,14 @@ function Authenticate () {
 
     useEffect(() => {
         if(session) {
+            console.log(session);
             navigate('/journals');
         } else {
             const token = new URLSearchParams(window.location.search).get('token');
 
             stytch.magicLinks.authenticate(token, {
                 session_duration_minutes: 60
-            }).then((response) => {
-                console.log(response);
-                alert('Successfully Authenticated');
-                navigate(0);
-            })
+            }).then(() => navigate(0));
         }
     }, [stytch, session])
     

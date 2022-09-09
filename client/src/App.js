@@ -13,27 +13,8 @@ function App() {
   const stytch = useStytch();
   const navigate = useNavigate();
 
-  const handleLogin = async(email) => {
-    try {
-    // const params = {
-    //   email: "barrettm51@gmail.com"
-    // }
-    await stytch.magicLinks.email.loginOrCreate(email)
-    .then((response) => console.log(response));
-    
-    alert(`Email has been sent to ${email}`);
-
-    } catch(e) {
-      console.log('Error logging in');
-      console.log(e);
-    }
-  
-
-  }
-
   const handleLogout = useCallback(async () => {
     await stytch.session.revoke();
-    alert('Logged out');
     navigate(0);
   }, [stytch]);
 
@@ -41,7 +22,7 @@ function App() {
     <div className='entire-app'>
       <Navigation handleLogout={handleLogout} />
       <Routes>
-          <Route path="/" element={<Login handleLogin={handleLogin}/>} />
+          <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={
             <PrivateRoute>
               <Dashboard />
@@ -57,7 +38,7 @@ function App() {
               <AccountSettings />
             </PrivateRoute>
           } />
-          <Route path="/login" element={<Login handleLogin={handleLogin} />} ></Route>
+          <Route path="/login" element={<Login />} ></Route>
           <Route path="/authenticate" element={<Authenticate />} ></Route>
           <Route path="*" element={<p>404 Page not found!</p>} ></Route>
       </Routes>

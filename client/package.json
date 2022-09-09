@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
+    "@stytch/stytch-js": "^3.3.2",
     "@stytch/stytch-react": "^4.0.6",
+    "@stytch/vanilla-js": "^0.1.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -43,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
