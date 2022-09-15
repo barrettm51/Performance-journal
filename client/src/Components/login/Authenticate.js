@@ -9,7 +9,6 @@ function Authenticate () {
 
     useEffect(() => {
         if(session) {
-            console.log(session);
             navigate('/journals');
         } else {
             const token = new URLSearchParams(window.location.search).get('token');

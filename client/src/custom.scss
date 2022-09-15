@@ -28,8 +28,14 @@ $theme-colors: (
   margin-left: 0px;
 }
 
+//Logout
 #logout {
   color: white;
+}
+
+button {
+  border: none;
+  background: none;
 }
 
 //Journal Page
@@ -134,61 +140,11 @@ textArea {
   //Login Page
   .login {
     @include paddingMainPages();
+    display: flex;
+    justify-content: center;
   }
 
-  .login h1 {
-    text-align: center;
-  }
 
-  .login form {
-    max-width: 480px;
-    margin: 2rem auto;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    background-color: $secondary;
-  }
-
-  .login p {
-    text-align: center;
-  }
-
-  .login input, button {
-    appearance: none;
-    border: none;
-    outline: none;
-    background: none;
-  }
-
-  .login input[type="email"] {
-    width: 100%;
-    padding: 0.5rem;
-    border-bottom: 2px solid;
-    color: black;
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    transition: 0.4s;
-  }
-
-  .login input[type="submit"] {
-    width: 100%;
-    padding: 0.5rem;
-    color: white;
-    background-color: black;
-    font-size: 1.2rem;
-    border-radius: 0.5rem;
-    transition: 0.4s;
-    cursor: pointer;
-  }
-
-  .login input[type="submit"]:hover {
-    background-color: white;
-    color: black;
-  }
-
-  .login ::placeholder {
-    color: rgb(49, 47, 47);
-  }
 
 //import bootstrap files- Keep at the bottom of file
 @import "~bootstrap/scss/bootstrap";
