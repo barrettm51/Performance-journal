@@ -28,6 +28,16 @@ $theme-colors: (
   margin-left: 0px;
 }
 
+//Logout
+#logout {
+  color: white;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
 //Journal Page
 
 .journal-page {
@@ -126,6 +136,15 @@ textArea {
   .account-settings {
     @include paddingMainPages();
   }
+
+  //Login Page
+  .login {
+    @include paddingMainPages();
+    display: flex;
+    justify-content: center;
+  }
+
+
 
 //import bootstrap files- Keep at the bottom of file
 @import "~bootstrap/scss/bootstrap";

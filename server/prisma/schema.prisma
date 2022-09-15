@@ -8,21 +8,21 @@ datasource db {
 }
 
 model journal_entries {
-  id                          Int     @id
+  id                          String  @id @default(uuid())
   journalDateCreated          String? @db.VarChar(50) @map("date_and_time_created")
   journalLastModified         String? @db.VarChar(50) @map("date_and_time_last_modified")
   journalEntryName            String? @db.VarChar(200) @map("title")
   journalContent              String? @map("content")
   test                        String? @map("testField")
-  user_id                     Int?
+  user_id                     String  @db.VarChar(60)
   users                       users?  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model users {
-  id              Int               @id
+  id              String            @db.VarChar(60) @id
   first_name      String?           @db.VarChar(25)
   last_name       String?           @db.VarChar(25)
-  email_address   String?           @db.VarChar(40)
+  email_address   String            @db.VarChar(40) @unique
   password        String?           @db.VarChar(50)
   journal_entries journal_entries[]
 }
