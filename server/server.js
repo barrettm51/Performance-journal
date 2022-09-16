@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-// const mockJournalEntries = require('./mockDB');
 const bodyParser = require('body-parser');
 const path = require('path');
 
