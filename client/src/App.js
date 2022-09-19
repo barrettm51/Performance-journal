@@ -17,7 +17,6 @@ function App() {
     await stytch.session.revoke();
     navigate(0);
   }, [stytch]);
-  //
 
   return (
     <div className='entire-app'>
