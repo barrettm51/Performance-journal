@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 
-//Prisma Code
+//Prisma Code 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
