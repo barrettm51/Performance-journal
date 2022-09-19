@@ -9,7 +9,7 @@ import store from './redux/store';
 //Stytch
 import { StytchProvider, initStytch } from '@stytch/stytch-react';
 
-const stytch = initStytch("public-token-test-5685294f-b070-42ec-9658-dade94e7cb4e");
+const stytch = initStytch(process.env.REACT_APP_PUBLIC_TOKEN_STYTCH);
 
 ReactDOM.render(
   <Provider store={store}>

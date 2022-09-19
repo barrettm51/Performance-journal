@@ -5,23 +5,19 @@ import { useEffect } from 'react';
 function Login() {
     const session = useStytchSession();
 
-    useEffect(() => {
-        console.log('redirect URL', process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL);
-    }, [])
-    //process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL
     const stytchProps = {
         loginOrSignupView: {
             products: [SDKProductTypes.emailMagicLinks, SDKProductTypes.oauth],
             emailMagicLinksOptions: {
-              loginRedirectURL: 'https://performance-journal-h.herokuapp.com/authenticate',
+              loginRedirectURL: process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL,
               loginExpirationMinutes: 30,
-              signupRedirectURL: 'https://performance-journal-h.herokuapp.com/authenticate',
+              signupRedirectURL: process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL,
               signupExpirationMinutes: 30,
             }
             },
             oauthOptions: {
-                loginRedirectURL: 'https://performance-journal-h.herokuapp.com/authenticate',
-                signupRedirectURL: 'https://performance-journal-h.herokuapp.com/authenticate',
+                loginRedirectURL: process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL,
+                signupRedirectURL: process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL,
                 providers: [
                 {
                     one_tap: true,
