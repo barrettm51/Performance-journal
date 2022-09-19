@@ -1,22 +1,27 @@
 import { Navigate } from 'react-router-dom';
 import { useStytchSession, Stytch, SDKProductTypes, OAuthProvidersTypes, OneTapPositions } from '@stytch/stytch-react';
+import { useEffect } from 'react';
 
 function Login() {
     const session = useStytchSession();
 
+    useEffect(() => {
+        console.log('redirect URL', process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL);
+    }, [])
+    //process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL
     const stytchProps = {
         loginOrSignupView: {
             products: [SDKProductTypes.emailMagicLinks, SDKProductTypes.oauth],
             emailMagicLinksOptions: {
-              loginRedirectURL: process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL,
+              loginRedirectURL: 'https://performance-journal-h.herokuapp.com/authenticate',
               loginExpirationMinutes: 30,
-              signupRedirectURL: process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL,
+              signupRedirectURL: 'https://performance-journal-h.herokuapp.com/authenticate',
               signupExpirationMinutes: 30,
             }
             },
             oauthOptions: {
-                loginRedirectURL: process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL,
-                signupRedirectURL: process.env.REACT_APP_LOGIN_OR_SIGNUP_REDIRECT_URL,
+                loginRedirectURL: 'https://performance-journal-h.herokuapp.com/authenticate',
+                signupRedirectURL: 'https://performance-journal-h.herokuapp.com/authenticate',
                 providers: [
                 {
                     one_tap: true,
