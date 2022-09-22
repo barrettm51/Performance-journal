@@ -20,7 +20,7 @@ function Navigation( { handleLogout } ) {
                         {session && <button id='logout' onClick={handleLogout} >Logout</button>}
 
                         {!session && <Navbar.Brand as={Link} to='/login'>Performance Journal</Navbar.Brand>}
-                        {!session && <Nav.Link as={Link} to='/login'>Login</Nav.Link>}
+                        {!session && <Nav.Link as={Link} to='/login'>Login</Nav.Link>} 
                     </Nav>
                 </Navbar.Collapse>
             </Container>
