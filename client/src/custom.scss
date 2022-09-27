@@ -31,9 +31,6 @@ $theme-colors: (
 //Logout
 #logout {
   color: white;
-}
-
-button {
   border: none;
   background: none;
 }
@@ -99,52 +96,56 @@ textArea {
     border-radius: 0px;
   }
   
-  #entry-title {
-    font-weight: 700;
-    font-size: 20px;
-    width: 900px;
-    border-width: 0.5px;
-    padding: 10px;
-    border-radius: 0px;
-  }
-  
-  #date-created {
-    margin-left: 10px;
-    font-size: 11px;
-  }
-  
-  #last-modified {
-    margin-left: 10px;
-    font-size: 11px;
-  }
-  
-  .syncStatus {
-    color: $primary;
-  }
+#entry-title {
+  font-weight: 700;
+  font-size: 20px;
+  width: 900px;
+  border-width: 0.5px;
+  padding: 10px;
+  border-radius: 0px;
+}
 
-  #delete-button {
-    background-color: rgb(247, 38, 38);
-    border-radius: 5px;
-  }
+#date-created {
+  margin-left: 10px;
+  font-size: 11px;
+}
 
-  //Dashboard Page
-  .dashboard {
-    @include paddingMainPages();
-  }
+#last-modified {
+  margin-left: 10px;
+  font-size: 11px;
+}
 
-  //Account Settings Page
-  .account-settings {
-    @include paddingMainPages();
-  }
+.syncStatus {
+  color: $primary;
+}
 
-  //Login Page
-  .login {
-    @include paddingMainPages();
-    display: flex;
-    justify-content: center;
-  }
+#delete-button {
+  background-color: rgb(247, 38, 38);
+  border-radius: 5px;
+}
 
+//Dashboard Page
+.dashboard {
+  @include paddingMainPages();
+}
 
+//Account Settings Page
+.account-settings {
+  @include paddingMainPages();
+}
+
+//Login Page
+.login {
+  @include paddingMainPages();
+  display: flex;
+  justify-content: center;
+}
+
+//Billing
+.upgrade Button {
+  background-color: orange;
+  outline-color: black;
+}
 
 //import bootstrap files- Keep at the bottom of file
 @import "~bootstrap/scss/bootstrap";

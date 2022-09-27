@@ -36,7 +36,7 @@ function App() {
           <Route path="/accountsettings" element={
             <PrivateRoute>
               <AccountSettings />
-            </PrivateRoute>
+            </PrivateRoute> 
           } />
           <Route path="/login" element={<Login />} ></Route>
           <Route path="/authenticate" element={<Authenticate />} ></Route>

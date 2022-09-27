@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_API_KEY);
 
 //Prisma Code 
 const { PrismaClient } = require('@prisma/client');
@@ -91,6 +92,25 @@ app.post('/users', async (req, res) => {
     })
     res.send(`Created user with stytch User ID: ${stytchUserId}`);
 });
+
+//Stripe Routes
+app.post('/create-checkout-session', async (req, res) => {
+    const session = await stripe.checkout.sessions.create({
+        line_items: [
+            {
+                price: 'price_1LmkBWI97INfU37UbjKMWwjr',
+                quantity: 1
+            },
+        ],
+        mode: 'payment',
+        success_url: `${process.env.DOMAIN}?success=true`,
+        cancel_url: `${process.env.DOMAIN}?cancelled=true`,
+        automatic_tax: {enabled: true},
+    })
+
+    res.redirect(303,session.url);
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
